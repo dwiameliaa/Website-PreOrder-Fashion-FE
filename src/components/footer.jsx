@@ -7,23 +7,28 @@ export default function Footer() {
         <div className="mx-auto max-w-screen-xl text-center">
           <ul className="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
             <li>
-              <Link to={"#"} className="mr-4 hover:underline md:mr-6">
-                Home
+              <Link to={"/"} className="mr-4 hover:underline md:mr-6">
+                Beranda
               </Link>
             </li>
             <li>
-              <Link to={"#"} className="mr-4 hover:underline md:mr-6">
+              <Link to={"/measurements"} className="mr-4 hover:underline md:mr-6">
                 Pre-Order
               </Link>
             </li>
             <li>
-              <Link to={"#"} className="mr-4 hover:underline md:mr-6">
-                Products
+              <Link to={"/products"} className="mr-4 hover:underline md:mr-6">
+                Produk
               </Link>
             </li>
             <li>
-              <Link to={"#"} className="mr-4 hover:underline md:mr-6">
-                Contact
+              <Link to={"/my-orders"} className="mr-4 hover:underline md:mr-6">
+                Pesananku
+              </Link>
+            </li>
+            <li>
+              <Link to={"/contact"} className="mr-4 hover:underline md:mr-6">
+                Kontak
               </Link>
             </li>
           </ul>

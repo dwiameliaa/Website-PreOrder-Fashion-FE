@@ -1,15 +1,36 @@
+import { useState } from "react";
+
 export default function Contact() {
+  const [nama, setNama] = useState("");
+  const [phone, setPhone] = useState("");
+  const [pesan, setPesan] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const nomorTujuan = "6281234567890";
+
+    const text = `Halo, saya ${nama}
+    Pesan:
+    ${pesan}`;
+
+    const whatsappURL = `https://wa.me/${nomorTujuan}?text=${encodeURIComponent(
+      text
+    )}`;
+
+    window.open(whatsappURL, "_blank");
+  };
   return (
     <>
       <section class="pt-28 pb-20 px-6 bg-white text-gray-800">
         {/* HERO */}
         <div class="text-center mb-14">
           <h1 class="text-4xl font-bold text-[#c6a84d]">
-            Contact Azmya Fashion
+            Kontak Azmya Fashion
           </h1>
           <p class="mt-3 text-lg text-gray-600">
             Kami siap membantu untuk semua pertanyaan seputar Pre-Order,
-            Product, dan layanan lainnya.
+            Produk, dan layanan lainnya.
           </p>
         </div>
 
@@ -21,9 +42,7 @@ export default function Contact() {
 
             <div>
               <p class="font-semibold text-gray-700">📍 Alamat:</p>
-              <p class="text-gray-600">
-                Ponorogo, Jawa Timur
-              </p>
+              <p class="text-gray-600">awa Timur</p>
             </div>
 
             <div>
@@ -39,10 +58,10 @@ export default function Contact() {
             <div>
               <p class="font-semibold text-gray-700">📧 Email:</p>
               <a
-                href="mailto:azmyafashion@gmail.com"
+                href="mailto:azmyafashion@example.com"
                 class="text-[#c6a84d] hover:underline"
               >
-                azmyafashion@gmail.com
+                azmyafashion@example.com
               </a>
             </div>
 
@@ -53,39 +72,51 @@ export default function Contact() {
           </div>
 
           {/* FORM KONTAK */}
-          <form class="bg-white shadow-lg rounded-xl p-6 border border-gray-200">
-            <h2 class="text-2xl font-bold mb-5 text-gray-800">Kirim Pesan</h2>
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white shadow-lg rounded-xl p-6 border border-gray-200"
+          >
+            <h2 className="text-2xl font-bold mb-5">Kirim Pesan</h2>
 
-            <div class="mb-4">
+            <div className="mb-2">
               <label class="block font-semibold mb-1">Nama Lengkap</label>
               <input
                 type="text"
-                class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#c6a84d] outline-none"
-                placeholder="Masukkan nama"
+                placeholder="Nama Lengkap"
+                className="w-full mb-3 border p-3 rounded-lg"
+                value={nama}
+                onChange={(e) => setNama(e.target.value)}
+                required
               />
             </div>
 
-            <div class="mb-4">
-              <label class="block font-semibold mb-1">Email</label>
+            <div className="mb-2">
+              <label class="block font-semibold mb-1">Telepon</label>
               <input
-                type="email"
-                class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#c6a84d] outline-none"
-                placeholder="Masukkan email"
+                type="number"
+                placeholder="Contoh 081234545677"
+                className="w-full mb-3 border p-3 rounded-lg"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
               />
             </div>
 
-            <div class="mb-4">
+            <div className="mb-2">
               <label class="block font-semibold mb-1">Pesan</label>
               <textarea
                 rows="5"
-                class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#c6a84d] outline-none"
-                placeholder="Tuliskan pesan Anda..."
-              ></textarea>
+                placeholder="Pesan"
+                className="w-full mb-4 border p-3 rounded-lg"
+                value={pesan}
+                onChange={(e) => setPesan(e.target.value)}
+                required
+              />
             </div>
 
             <button
               type="submit"
-              class="w-full bg-[#c6a84d] text-white font-semibold py-3 rounded-lg hover:bg-[#b59742] transition-all"
+              className="w-full bg-[#c6a84d] text-white py-3 rounded-lg"
             >
               Kirim Pesan
             </button>

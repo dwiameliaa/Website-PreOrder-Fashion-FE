@@ -11,9 +11,9 @@ export const login = async ({ email, password }) => {
   }
 }
 
-export const register = async ({ email, password, name }) => {
+export const register = async ({ email, password, name, address, phone }) => {
   try {
-    const { data } = await API.post('/register', { email, password, name });
+    const { data } = await API.post('/register', { email, password, name, address, phone });
     return data;
   } catch (error) {
     console.log(error);
@@ -59,6 +59,10 @@ export const logout = async () => {
     // pastikan token dihapus apapun hasilnya
     localStorage.removeItem('accessToken');
   }
+};
+
+export const changePassword = (data) => {
+  return API.post("/change-password", data);
 };
 
 

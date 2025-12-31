@@ -6,4 +6,13 @@ export const API = axios.create({
   baseURL: `${url}/api`,
 })
 
-// export const bookImageStorage = `${url}/storage/books`
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem("accessToken");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+export const productImageStorage = `${url}/storage/products`
+export const measurementsImageStorage = `${url}/storage/order_measurements`
